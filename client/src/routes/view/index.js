@@ -165,7 +165,7 @@ class ViewUser extends React.Component {
 	render() {
 		return(
 			<div className='body'>
-				{this.props.users.length? <h2>USERS</h2>: <h1>Error 404</h1>}
+				{this.props.users? <h2>USERS</h2>: <h1>Error 404</h1>}
 				{this.props.users.length? <div>{this.createUsers()}</div> : ""}
 				{this.props.users.length? <h3  onClick={() =>this.downloadAll()}><button className='each-cell'>Download All</button></h3>: ""}
 			</div>
