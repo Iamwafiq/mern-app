@@ -87,6 +87,23 @@ class ViewUser extends React.Component {
 		});
 	}
 
+	 deleteUser (event, param) {
+        
+
+        if (
+            window.confirm(
+                `Do tou want to delete ${param.name.toUpperCase()} permanently?`,
+            )
+        ) {
+        	const response = fetch("http://localhost:5000/api/remove/"+param._id, {
+			method: "DELETE",
+		}) 
+		window.location.reload();
+        	
+           
+        }
+    }
+
 	downloadSinglePDF(obj) {
 		  let idName = `pdf-name-${obj.index}`;
 		  let idEmail = `pdf-email-${obj.index}`;
@@ -135,7 +152,9 @@ class ViewUser extends React.Component {
 							<td className='each-cell' onClick={() => this.downloadSinglePDF({index: i})}>
 							 <button>Donwload</button>
 							</td>
-
+							<td className='each-cell' onClick={(event) => this.deleteUser(event, users[i])}>
+							 <button>Delete</button>
+							</td>
 						</tr>
 					</tbody>
 				
